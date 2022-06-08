@@ -20,14 +20,18 @@ public class Main {
     private static boolean checkLoginValid(String login, String password, String confirmPassword) {
         boolean state = true;
         try {
-            if (login.length() > 20) throw new WrongLoginException("Длина логина должна быть <= 20 символов");
-            if (password.length() > 20) throw new WrongPasswordException("Длина пароля должна быть <= 20 символов");
+            if (login.length() > 20) {
+                throw new WrongLoginException("Длина логина должна быть <= 20 символов");
+            }
+            if (password.length() > 20) {
+                throw new WrongPasswordException("Длина пароля должна быть <= 20 символов");
+            }
 
-            if (!login.matches("[a-zA-Z0-9_]*")) {
+            if (!login.matches("[a-zA-Z0-9_]+")) {
                 throw new WrongLoginException("Логин должен состоять из латинских символов,цифр и знака _");
             }
 
-            if (!password.matches("[a-zA-Z0-9_]*")) {
+            if (!password.matches("[a-zA-Z0-9_]+")) {
                 throw new WrongPasswordException("Пароль должен состоять из латинских символов,цифр и знака _");
             }
 
